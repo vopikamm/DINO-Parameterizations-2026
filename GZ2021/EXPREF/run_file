@@ -1,0 +1,13 @@
+#
+0-35 ./nemo
+36-39 python3 ./main.py --exec prod
+#
+40-75 ./nemo
+76-79 python3 ./main.py --exec prod
+#
+80-115 ./nemo
+116-119 python3 ./main.py --exec prod
+#
+120-155 ./nemo
+156-159 python3 ./main.py --exec prod
+
