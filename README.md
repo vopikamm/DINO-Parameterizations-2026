@@ -26,7 +26,7 @@ DINO-Parameterization-2026/
     └── launch_EXP00.sh
 ```
 
-The first level corresponds to the three tested parameterizations: [Guillaumin and Zanna (2021)](https://doi.org/10.1029/2021MS002534) (`GZ2021`), Kinetic Energy Backscatter implemented by [Perezhogin (2020)](https://doi.org/10.1515/rnam-2020-0006) (`KEB2020`), [Zanna and Bolton (2020)](https://doi.org/10.1029/2020GL088376) (`ZB2020`).
+The first level corresponds to the three tested parameterizations: [Guillaumin and Zanna (2021)](https://doi.org/10.1029/2021MS002534) (`GZ2021`), Kinetic Energy Backscatter implemented by [Perezhogin (2020)](https://doi.org/10.1515/rnam-2020-0006) (`KEB2020`), [Zanna and Bolton (2020)](https://doi.org/10.1029/2020GL088376) (`ZB2020`). The KEB2020 parameterization was already implemented and available for NEMO. The full module and its documentation can be found in the repository [Pperezhogin/Kinetic-energy-backscatter-for-NEMO](https://github.com/Pperezhogin/Kinetic-energy-backscatter-for-NEMO). The subfolder included here uses only a subset of that module, with minor adjustments to ensure compatibility with DINO and NEMO version 4.2.1.
 
 Each folder contains subfolders with the Fortran source files to be compiled with the [NEMO ocean model](https://www.nemo-ocean.eu/) (`MY_SRC`) as well as all other source files related to the respective reference experiment (`EXPREF`).
 
@@ -60,4 +60,24 @@ To build a configuration reproducing the demonstrated experiments, make sure to 
 Each experiment folder contains a slurm script (`launch_EXP00.sh`) to run the compiled reference experiment. The `namelist_cfg` defines a run of the first year of the respective experiment, as performed in the study. The slurm scripts (`launch_EXP00.sh`) and the associated process allocation files (`mpmd.conf`) are prototypical, and have been configured for reasonable parallelization on the ressources that where available to us on the [Jean Zay](http://www.idris.fr/eng/jean-zay/index.html) supercomputer. They might differ on other machines.
 
 **Note:** the GZ2021 experiments were conducted using a hybrid CPU-GPU approach. If hybrid CPU-GPU nodes are not available, the experiments can be run on CPU only, at the cost of reduced computational performance.
+
+----
+
+## References
+
+ Kamm, D., Deshayes, J., & Madec, G. (2025). DINO: A Diabatic Model of Pole-to-Pole Ocean Dynamics to Assess Subgrid Parameterizations across Horizontal Scales. EGUsphere, 2025, 1-26.
+
+ Guillaumin, A. P., & Zanna, L. (2021). Stochastic-deep learning parameterization of ocean momentum forcing. Journal of Advances in Modeling Earth Systems, 13, e2021MS002534. https://doi.org/10.1029/2021MS002534 
+
+ Perezhogin, Pavel A. (2020). Testing of kinetic energy backscatter parameterizations in the NEMO ocean model. Russian Journal of Numerical Analysis and Mathematical Modelling, vol. 35, no. 2, pp. 69-82. https://doi.org/10.1515/rnam-2020-0006
+
+ Zanna, L., Bolton, T. (2020). Data-driven equation discovery of ocean mesoscale closures. Geophysical Research Letters, 47, e2020GL088376. https://doi.org/10.1029/2020GL088376 
+
+ Perezhogin, P., Zhang, C., Adcroft, A., Fernandez-Granda, C., & Zanna, L. (2024). A stable implementation of a data-driven scale-aware mesoscale parameterization. Journal of Advances in Modeling Earth Systems, 16, e2023MS004104. https://doi.org/10.1029/2023MS004104 
+
+----
+
+## How to cite
+
+If you use this repository, please cite the associated paper once published (Kamm et al. 2026).
  
