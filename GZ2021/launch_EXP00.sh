@@ -66,6 +66,6 @@ else
 fi
 
 # run coupled NEMO-Python
-time srun --multi-prog ./run_file
+time srun --multi-prog ./mpmd.conf
 
 date
