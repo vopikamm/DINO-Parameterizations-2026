@@ -2,7 +2,7 @@
 
 Source code for the paper `Kamm, D., Perezhogin, P., Deshayes, J., Meunier, E., Barge, A. (2026). **An Assessment of Data-Driven Eddy-Parameterisations in an Atlantic Sector Model**. To be submitted to JAMES.
 
-This repository, together with the respective data linked on Zenodo (TODO DOI), can be used to reproduce all the model experiments performed in this study. The processed data, as well as a Jupyter notebook to reproduce all figures can be found in a separate Zenodo archive (TODO DOI).
+This repository, together with the respective restart file linked on Zenodo (TODO DOI), can be used to reproduce all the model experiments performed in this study. The processed data, as well as a Jupyter notebook to reproduce all figures can be found in a separate Zenodo archive (TODO DOI).
 
 ---- 
 ## Content
@@ -20,10 +20,11 @@ DINO-Parameterization-2026/
 │   ├── cpp_DINO_GZ21.fcm
 │   └── launch_EXP00.sh
 └── ZB2020/
-    ├── EXPREF/
-    ├── MY_SRC/
-    ├── cpp_DINO_GZ21.fcm
-    └── launch_EXP00.sh
+│   ├── EXPREF/
+│   ├── MY_SRC/
+│   ├── cpp_DINO_GZ21.fcm
+│   └── launch_EXP00.sh
+└── restart_1_4deg.nc (Only on Zenodo)
 ```
 
 The first level corresponds to the three tested parameterizations: [Guillaumin and Zanna (2021)](https://doi.org/10.1029/2021MS002534) (`GZ2021`), Kinetic Energy Backscatter implemented by [Perezhogin (2020)](https://doi.org/10.1515/rnam-2020-0006) (`KEB2020`), [Zanna and Bolton (2020)](https://doi.org/10.1029/2020GL088376) (`ZB2020`). The KEB2020 parameterization was already implemented and available for NEMO. The full module and its documentation can be found in the repository [Pperezhogin/Kinetic-energy-backscatter-for-NEMO](https://github.com/Pperezhogin/Kinetic-energy-backscatter-for-NEMO). The subfolder included here uses only a subset of that module, with minor adjustments to ensure compatibility with DINO and NEMO version 4.2.1.
@@ -32,6 +33,7 @@ Each folder contains subfolders with the Fortran source files to be compiled wit
 
 `cpp_DINO*.fcm` files contain the relevant keys needed for the compilation of each experiment and `launch_EXP00.sh` files are demonstrative slurm scripts to run each experiment (included here for the [Jean Zay](http://www.idris.fr/eng/jean-zay/index.html) supercomputer).
 
+The restart file `restart_1_4deg.nc` was used as initial state for all experiments and is needed to run the experiments. It can be obtained from the Zenodo archive linked to this repository.
 
  ----
 ## Installation
