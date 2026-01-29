@@ -2,9 +2,12 @@
 
 Source code for the paper `Kamm, D., Perezhogin, P., Deshayes, J., Meunier, E., Barge, A. (2026). **An Assessment of Data-Driven Eddy-Parameterisations in an Atlantic Sector Model**. To be submitted to JAMES.
 
-This repository, together with the respective restart file linked on Zenodo (TODO DOI), can be used to reproduce all the model experiments performed in this study. The processed data, as well as a Jupyter notebook to reproduce all figures can be found in a separate Zenodo archive (TODO DOI).
+This repository, together with the respective restart file linked on Zenodo ([![DOI](https://zenodo.org/badge/1142577224.svg)](https://zenodo.org/badge/latestdoi/1142577224)), can be used to reproduce all the model experiments performed in this study. The processed data, as well as a Jupyter notebook to reproduce all figures can be found in a separate Zenodo archive ([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18405108.svg)](https://doi.org/10.5281/zenodo.18405108)).
 
----- 
+
+
+----
+
 ## Content
 
 ```bash
@@ -20,20 +23,19 @@ DINO-Parameterization-2026/
 │   ├── cpp_DINO_GZ21.fcm
 │   └── launch_EXP00.sh
 └── ZB2020/
-│   ├── EXPREF/
-│   ├── MY_SRC/
-│   ├── cpp_DINO_GZ21.fcm
-│   └── launch_EXP00.sh
-└── restart_1_4deg.nc (Only on Zenodo)
+    ├── EXPREF/
+    ├── MY_SRC/
+    ├── cpp_DINO_GZ21.fcm
+    └── launch_EXP00.sh
 ```
 
 The first level corresponds to the three tested parameterizations: [Guillaumin and Zanna (2021)](https://doi.org/10.1029/2021MS002534) (`GZ2021`), Kinetic Energy Backscatter implemented by [Perezhogin (2020)](https://doi.org/10.1515/rnam-2020-0006) (`KEB2020`), [Zanna and Bolton (2020)](https://doi.org/10.1029/2020GL088376) (`ZB2020`). The KEB2020 parameterization was already implemented and available for NEMO. The full module and its documentation can be found in the repository [Pperezhogin/Kinetic-energy-backscatter-for-NEMO](https://github.com/Pperezhogin/Kinetic-energy-backscatter-for-NEMO). The subfolder included here uses only a subset of that module, with minor adjustments to ensure compatibility with DINO and NEMO version 4.2.1.
 
 Each folder contains subfolders with the Fortran source files to be compiled with the [NEMO ocean model](https://www.nemo-ocean.eu/) (`MY_SRC`) as well as all other source files related to the respective reference experiment (`EXPREF`).
 
-`cpp_DINO*.fcm` files contain the relevant keys needed for the compilation of each experiment and `launch_EXP00.sh` files are demonstrative slurm scripts to run each experiment (included here for the [Jean Zay](http://www.idris.fr/eng/jean-zay/index.html) supercomputer).
+The `cpp_DINO*.fcm` files contain the relevant keys needed for the compilation of each experiment and `launch_EXP00.sh` files are demonstrative slurm scripts to run each experiment (included here for the [Jean Zay](http://www.idris.fr/eng/jean-zay/index.html) supercomputer).
 
-The restart file `restart_1_4deg.nc` was used as initial state for all experiments and is needed to run the experiments. It can be obtained from the Zenodo archive linked to this repository.
+The restart files `restart_GZ21.nc` and `restart_ZB20_KEB20.nc` were used as initial state for the respective experiments and are needed to run the experiments. They can be obtained from the Zenodo archive linked to this repository.
 
  ----
 ## Installation
@@ -59,7 +61,7 @@ To build a configuration reproducing the demonstrated experiments, make sure to 
 
 ## Run the experiment
 
-Each experiment folder contains a slurm script (`launch_EXP00.sh`) to run the compiled reference experiment. The `namelist_cfg` defines a run of the first year of the respective experiment, as performed in the study. The slurm scripts (`launch_EXP00.sh`) and the associated process allocation files (`mpmd.conf`) are prototypical, and have been configured for reasonable parallelization on the ressources that where available to us on the [Jean Zay](http://www.idris.fr/eng/jean-zay/index.html) supercomputer. They might differ on other machines.
+Each experiment folder contains a slurm script (`launch_EXP00.sh`) to run the compiled reference experiment. The `namelist_cfg` defines a run of the first year of the respective experiment, as performed in the study, initialised from the respective `restart_*.nc` file. The restart files need to be downloaded from the Zenodo archive linked to this repository. The slurm scripts (`launch_EXP00.sh`) and the associated process allocation files (`mpmd.conf`) are prototypical, and have been configured for reasonable parallelization on the ressources that where available to us on the [Jean Zay](http://www.idris.fr/eng/jean-zay/index.html) supercomputer. They might differ on other machines.
 
 **Note:** the GZ2021 experiments were conducted using a hybrid CPU-GPU approach. If hybrid CPU-GPU nodes are not available, the experiments can be run on CPU only, at the cost of reduced computational performance.
 
